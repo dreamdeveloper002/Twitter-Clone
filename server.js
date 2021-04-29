@@ -1,19 +1,22 @@
 const express = require('express');
 const middleware = require('./middleware')
+const path = require('path')
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
+app.use(express.static(path.join(__dirname, "public")));
+
 //Routes
-const loginRoute = require('./routes/loginRoutes')
+const loginRoute = require('./routes/loginRoutes');
 
 app.use('/login', loginRoute);
 
 
 
-const port = 3000;
+const port = 3002;
 
 
 const server = app.listen(port, () => {
@@ -28,6 +31,6 @@ app.get("/", middleware.requireLogin, (req, res, next) => {
         pageTitle : "Home"
     }
     res.status(200).render("home", payload)
-})
+});
 
 
