@@ -11,12 +11,14 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Routes
 const loginRoute = require('./routes/loginRoutes');
+const registerRoute = require('./routes/registerRoutes')
 
 app.use('/login', loginRoute);
+app.use('/register', registerRoute);
 
 
 
-const port = 3002;
+const port = 3003;
 
 
 const server = app.listen(port, () => {
