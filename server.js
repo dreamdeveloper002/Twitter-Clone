@@ -7,6 +7,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 //Routes
@@ -18,7 +19,7 @@ app.use('/register', registerRoute);
 
 
 
-const port = 3004;
+const port = 3005;
 
 
 const server = app.listen(port, () => {
