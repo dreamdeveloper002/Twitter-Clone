@@ -1,11 +1,12 @@
 const express = require('express');
 const middleware = require('./middleware')
 const path = require('path')
-
+const bodyParser = require('body-parser')
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -19,7 +20,7 @@ app.use('/register', registerRoute);
 
 
 
-const port = 3005;
+const port = 3006;
 
 
 const server = app.listen(port, () => {
