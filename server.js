@@ -3,7 +3,7 @@ const middleware = require('./middleware')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express();
-
+const connectDB = require('./database')
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
@@ -20,7 +20,7 @@ app.use('/register', registerRoute);
 
 
 
-const port = 3006;
+const port = 3007;
 
 
 const server = app.listen(port, () => {
