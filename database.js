@@ -14,7 +14,7 @@ class Database {
 
 
     connect() {
-      mongoose.connect("mongodb+srv://kosemani123:moshood002@twitterclonecluster.pomsj.mongodb.net/TwitterClone?retryWrites=true&w=majority").then(() => {
+      mongoose.connect(process.env.MONGO_URI).then(() => {
         console.log("database connection successful")
       }).catch((err) => {
         console.log("database connection error " + err)

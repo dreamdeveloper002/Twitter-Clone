@@ -3,9 +3,16 @@ const middleware = require('./middleware')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express();
-const connectDB = require('./database')
+const dotenv = require('dotenv');
+const connectDB = require('./database');
+
 app.set('view engine', 'pug');
 app.set('views', 'views');
+
+
+
+dotenv.config()
+
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,7 +27,7 @@ app.use('/register', registerRoute);
 
 
 
-const port = 3007;
+const port = 3008;
 
 
 const server = app.listen(port, () => {
