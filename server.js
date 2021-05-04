@@ -4,6 +4,9 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const app = express();
 const dotenv = require('dotenv');
+
+dotenv.config()
+
 const connectDB = require('./database');
 
 app.set('view engine', 'pug');
@@ -11,7 +14,7 @@ app.set('views', 'views');
 
 
 
-dotenv.config()
+
 
 
 
@@ -27,7 +30,7 @@ app.use('/register', registerRoute);
 
 
 
-const port = 3008;
+const port = 3009;
 
 
 const server = app.listen(port, () => {
