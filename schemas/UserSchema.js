@@ -22,6 +22,13 @@ const UserSchema = new Schema({
     trim: true
   },
 
+  email: {
+    type: String,
+    required: true,
+    trim: true
+  },
+
+
   password: {
     type: String,
     required: true,
@@ -31,6 +38,8 @@ const UserSchema = new Schema({
     type: String,
     default: "/images/profilePic.png"
   }
+}, {
+  timestamps: true
 });
 
 
