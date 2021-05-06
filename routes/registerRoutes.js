@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 
@@ -34,9 +35,7 @@ router.post("/", async (req, res, next) => {
           { email: email }
         ]
       }).catch((error) => {
-        
         console.log(error)
-
         payload.errorMessage = "Something went wrong.";
         res.status(200).render("register", payload);
 
@@ -46,9 +45,12 @@ router.post("/", async (req, res, next) => {
 
         //User doesn't exit
         var data = req.body;
+
+        data.password = await bcrypt.hash(password, 10);
         User.create(data)
         .then((user) => {
-           console.log(user)
+           req.session.user = user;
+           return res.redirect('/');
         })
 
       } else {

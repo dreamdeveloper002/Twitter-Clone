@@ -3,6 +3,7 @@ const middleware = require('./middleware')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express();
+const session = require('express-session')
 const dotenv = require('dotenv');
 
 dotenv.config()
@@ -13,13 +14,14 @@ app.set('view engine', 'pug');
 app.set('views', 'views');
 
 
-
-
-
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(session({
+    secret: process.env.SECRET,
+    resave: true,
+    saveUninitialized: false
+}));
 
 //Routes
 const loginRoute = require('./routes/loginRoutes');
@@ -30,7 +32,7 @@ app.use('/register', registerRoute);
 
 
 
-const port = 3010;
+const port = 3012;
 
 
 const server = app.listen(port, () => {
