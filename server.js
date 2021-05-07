@@ -32,10 +32,10 @@ app.use('/register', registerRoute);
 
 
 
-const port = 3012;
+const PORT = process.env.PORT || 5000;
 
 
-const server = app.listen(port, () => {
+const server = app.listen(PORT, () => {
     console.log(`server listing on port ${port}`)
 });
 
@@ -49,4 +49,12 @@ app.get("/", middleware.requireLogin, (req, res, next) => {
     res.status(200).render("home", payload)
 });
 
+
+//handle unhandled promise rejections
+process.on('unhandledRejection', (err, Promise) => {
+    console.log(`Error: ${err.message}`);
+
+    //close server & exit process
+    server.close(() => process.exit(1));
+})
 
