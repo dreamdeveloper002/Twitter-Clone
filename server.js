@@ -36,7 +36,7 @@ const PORT = process.env.PORT || 5000;
 
 
 const server = app.listen(PORT, () => {
-    console.log(`server listing on port ${port}`)
+    console.log(`server listing on port ${PORT}`)
 });
 
 
@@ -44,7 +44,8 @@ const server = app.listen(PORT, () => {
 app.get("/", middleware.requireLogin, (req, res, next) => {
 
     var payload = {
-        pageTitle : "Home"
+        pageTitle : "Home",
+        userLoggedIn : req.session.user
     }
     res.status(200).render("home", payload)
 });
