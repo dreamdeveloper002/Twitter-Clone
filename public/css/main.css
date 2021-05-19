@@ -27,6 +27,8 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--blue);
+  text-decoration: none;
 }
 
 nav a.blue {
@@ -37,6 +39,7 @@ nav a:hover {
   background-color: var(--buttonHoverBg);
   color: var(--blue);
   border-radius: 50%;
+  text-decoration: underline;
 }
 
 
