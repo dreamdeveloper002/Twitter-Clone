@@ -35,6 +35,7 @@ router.post("/", async (req, res, next) => {
             var result = await bcrypt.compare(req.body.logPassword, user.password)
 
             if(result === true) {
+                console.log(user)
                req.session.user = user;
                return res.redirect('/');
             } 
