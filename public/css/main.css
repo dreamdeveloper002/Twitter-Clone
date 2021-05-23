@@ -2,7 +2,7 @@
   --blue: #1FA2F1;
   --buttonHoverBg: #d4edff;
   --lightGrey: rgb(230, 236, 240);
-  --spacing: 15px
+  --spacing: 15px;
 }
 
 a {
@@ -47,13 +47,10 @@ nav a:hover {
   background-color: var(--buttonHoverBg);
   color: var(--blue);
   border-radius: 50%;
-  text-decoration: underline;
 }
 
-
-
 .mainSectionContainer {
-  padding: 0;
+  padding:  0;
   border-left: 1px solid var(--lightGrey);
   border-right: 1px solid var(--lightGrey);
   display: flex;
@@ -61,14 +58,32 @@ nav a:hover {
 }
 
 .titleContainer {
-   height: 53px;
-   padding: 0 var(--spacing);
-   display: flex;
-   align-items: center;
-   border-bottom: 1px solid var(--lightGrey);
-   flex-shrink: 0;
-};
+  height: 53px;
+  padding: 0 var(--spacing);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--lightGrey);
+  flex-shrink: 0;
+}
 
 .titleContainer h1 {
   flex: 1;
+}
+
+.postFormContainer {
+  display: flex;
+  padding: var(--spacing);
+  border-bottom: 10px solid rgb(230, 236, 240);
+  flex-shrink: 0;
+}
+
+.userImageContainer {
+  width: 50px;
+  height: 50px;
+}
+
+.userImageContainer img {
+  width: 100%;
+  border-radius: 50%;
+  background-color: white;
 }

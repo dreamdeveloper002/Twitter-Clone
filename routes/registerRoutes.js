@@ -35,7 +35,6 @@ router.post("/", async (req, res, next) => {
           { email: email }
         ]
       }).catch((error) => {
-        console.log(error)
         payload.errorMessage = "Something went wrong.";
         res.status(200).render("register", payload);
 
