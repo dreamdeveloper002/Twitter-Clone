@@ -21,12 +21,12 @@ $("#submitPostButton").click(()=>{
 
 
   var data = {
-     content: textbox.val()
+     //content: textbox.val()
   };
 
 
-  $.post("/api/post", data, (postData, status, xhr) => {
-     
+  $.post("/api/posts", data, (postData, status, xhr) => {
+       console.log('it worked')
   });
 
 });

@@ -26,11 +26,15 @@ app.use(session({
 //Routes
 const loginRoute = require('./routes/loginRoutes');
 const logoutRoute = require('./routes/logoutRoutes');
-const registerRoute = require('./routes/registerRoutes')
+const registerRoute = require('./routes/registerRoutes');
+
+//Api Routes
+const postRoute = require('./routes/api/posts');
 
 app.use('/login', loginRoute);
 app.use('/register', registerRoute);
 app.use('/logout', logoutRoute);
+app.use('/api/posts', postRoute);
 
 
 const PORT = process.env.PORT || 5000;
