@@ -19,6 +19,6 @@ PostSchema = new Schema({
 });
 
 
-var Post = mongoose.model('User', PostSchema);
+var Post = mongoose.model('Post', PostSchema);
 
 module.exports = Post;
