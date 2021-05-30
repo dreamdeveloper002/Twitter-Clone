@@ -15,18 +15,18 @@ $("#postTextarea").keyup(event => {
 });
 
 
-$("#submitPostButton").click(()=>{
-  var button = $(event.target);
-  var textbox = $("#postTextarea");
+// $("#submitPostButton").click(()=>{
+//   var button = $(event.target);
+//   var textbox = $("#postTextarea");
 
 
-  var data = {
-     content: textbox.val()
-  };
+//   var data = {
+//      content: textbox.val()
+//   };
 
 
-  $.post("/api/posts", data, (postData, status, xhr) => {
-       console.log(postData)
-  });
+//   $.post("/api/posts", data, (postData, status, xhr) => {
+//        console.log(postData)
+//   });
 
-});
+// });
