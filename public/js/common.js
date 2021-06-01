@@ -1,32 +1,32 @@
-$("#postTextarea").keyup(event => {
-  var textbox = $(event.target);
-  var value = textbox.val().trim();
+// $("#postTextarea").keyup(event => {
+//   var textbox = $(event.target);
+//   var value = textbox.val().trim();
   
-  var submitButton = $("#submitPostButton");
+//   var submitButton = $("#submitPostButton");
  
-  if(submitButton.length == 0) return alert("No submit button found");
+//   if(submitButton.length == 0) return alert("No submit button found");
 
-  if (value == "") {
-      submitButton.prop("disabled", true);
-      return;
-  }
+//   if (value == "") {
+//       submitButton.prop("disabled", true);
+//       return;
+//   }
 
-  submitButton.prop("disabled", false);
-});
-
-
-$("#submitPostButton").click(()=>{
-  var button = $(event.target);
-  var textbox = $("#postTextarea");
+//   submitButton.prop("disabled", false);
+// });
 
 
-  var data = {
-     content: textbox.val()
-  };
+// $("#submitPostButton").click(()=>{
+//   var button = $(event.target);
+//   var textbox = $("#postTextarea");
 
 
-  $.post("/api/posts", data, (postData, status, xhr) => {
-       console.log(postData)
-  });
+//   var data = {
+//      content: textbox.val()
+//   };
 
-});
+
+//   $.post("/api/posts", data, (postData, status, xhr) => {
+//        console.log(postData)
+//   });
+
+// });
