@@ -4,6 +4,7 @@ const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const Post = require('../../schemas/PostUser');
+const User = require('../../schemas/UserSchema')
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,7 +13,7 @@ router.get("/", (req, res, next) => {
     res.status(200).render("login")
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", async(req, res, next) => {
   if(!req.body.content) {
      console.log("Content wasn't send with the request");
      return res.sendStatus(400)
@@ -24,9 +25,11 @@ router.post("/", async (req, res, next) => {
   };
 
   Post.create(postData)
-  .then(newPost =>{
-    return res.status(201).send(newPost)
-  }).catch(error => {
+  .then(async newPost =>{
+    newPost = await User.populate(newPost, { path: "postedBy"})
+    res.status(201).send(newPost)
+  })
+  .catch(error => {
       console.log(error);
       res.sendStatus(400)
   });
