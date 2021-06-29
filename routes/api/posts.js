@@ -13,6 +13,16 @@ router.get("/", (req, res, next) => {
     res.status(200).render("login")
 });
 
+router.get("/", (req, res, next) => {
+  Post.find()
+  .then( results => res.status(200).send(results))
+  .catch(error => {
+    console.log(error);
+    res.sendStatus(400);
+});
+
+});
+
 router.post("/", async(req, res, next) => {
   if(!req.body.content) {
      console.log("Content wasn't send with the request");
