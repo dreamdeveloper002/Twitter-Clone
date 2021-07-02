@@ -1,9 +1,9 @@
-// $(document).ready(() => {
+$(document).ready(() => {
 
-//   $.get("/api/posts", results => {
+  $.get("/api/posts", results => {
       
-//     console.log(results)
+    console.log(results)
 
-//   })
+  })
 
-// });
+});
