@@ -15,7 +15,10 @@ router.get("/", (req, res, next) => {
 
 router.get("/", (req, res, next) => {
   Post.find()
-  .then( results => res.status(200).send(results))
+  .then( results => { 
+    console.log(results)
+    res.status(200).send(results)
+   })
   .catch(error => {
     console.log(error);
     res.sendStatus(400);
