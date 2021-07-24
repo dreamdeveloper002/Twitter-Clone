@@ -21,10 +21,8 @@ $("#submitPostButton").click(() => {
   var data = {
       content: textbox.val()
   }
-  console.log(data)
 
   $.post("/api/posts", data, postData => {
-      console.log(postData)
       var html = createPostHtml(postData);
       $(".postsContainer").prepend(html);
       textbox.val("");
@@ -32,12 +30,42 @@ $("#submitPostButton").click(() => {
   })
 })
 
+
+$(document).on("click", ".likeButton", (event) => {
+    var button = $(event.target);
+    var postId = getPostIdFromElement(button);
+    if (postId === undefined ) return;
+
+    $.ajax({
+        url: `/api/posts/${postId}/like`,
+        type: "PUT",
+        success: (postData) => {
+             console.log(postData)
+        }
+    })
+});
+
+
+function getPostIdFromElement(element) {
+    var isRoot = element.hasClass("post");
+    var rootElement = isRoot ? element : element.closest(".post");
+    var postId = rootElement.data().id;
+    
+    if(postId === undefined ) return alert("Post id undefined");
+
+    return postId;
+}
+
+
+
+
+
 function createPostHtml(postData) {
   var postedBy = postData.postedBy;
   var displayName = postedBy.firstName + " " + postedBy.lastName;
   var timestamp = timeDifference(new Date(), new Date(postData.createdAt));
 
-  return `<div class='post'>
+  return `<div class='post' data-id='${postData._id}'>
 
               <div class='mainContentContainer'>
                   <div class='userImageContainer'>
@@ -64,7 +92,7 @@ function createPostHtml(postData) {
                               </button>
                           </div>
                           <div class='postButtonContainer'>
-                              <button>
+                              <button class='likeButton'>
                                   <i class='far fa-heart'></i>
                               </button>
                           </div>

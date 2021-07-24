@@ -3,7 +3,7 @@ const app = express();
 
 const router = express.Router();
 const bodyParser = require('body-parser');
-const Post = require('../../schemas/PostUser');
+const Post = require('../../schemas/PostSchema');
 const User = require('../../schemas/UserSchema')
 
 
@@ -48,6 +48,26 @@ router.post("/", async(req, res, next) => {
       res.sendStatus(400)
   });
 
+});
+
+
+router.put("/:id/like", async(req, res, next) => {
+  var postId = req.params.id;
+  var userId = req.session.user._id;
+
+  var isLiked = req.session.user.likes && req.session.user.likes.includes(postId);
+
+  var option = isLiked ? "$pull" : "$addToSet";
+
+  //Insert user like
+  req.session.user = await User.findByIdAndUpdate(userId, { [option]: { likes: postId }}, { new: true })
+  .catch(error => {
+    console.log(error);
+    res.status(400);
+  })
+
+  
+  res.status(200).send('Yahoo')
 });
 
 
