@@ -9,21 +9,22 @@ const User = require('../../schemas/UserSchema')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-router.get("/", (req, res, next) => {
-    res.status(200).render("login")
-});
+
 
 router.get("/", (req, res, next) => {
   Post.find()
-  .then( results => { 
-    console.log(results)
-    res.status(200).send(results)
-   })
+  .populate("postedBy")
+  .sort({"createdAt": -1 })
+  .then( results => res.status(200).send(results))
   .catch(error => {
     console.log(error);
     res.sendStatus(400);
 });
 
+});
+
+router.get("/", (req, res, next) => {
+  res.status(200).render("login")
 });
 
 router.post("/", async(req, res, next) => {

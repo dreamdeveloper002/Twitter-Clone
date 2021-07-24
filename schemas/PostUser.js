@@ -10,7 +10,7 @@ PostSchema = new Schema({
    },
    postedBy: {
      type: Schema.Types.ObjectId,
-     ref: 'user'
+     ref: 'User'
    },
    pinned: Boolean
 

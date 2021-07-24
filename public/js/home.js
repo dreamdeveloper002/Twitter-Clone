@@ -3,22 +3,22 @@ $(document).ready(() => {
   $.get("/api/posts", results => {
       
     console.log(results)
-    // outputPost(results, $(".postsContainer"));
+    outputPosts(results, $(".postsContainer"));
 
   })
 
 });
 
 
-// function outputPost(results, container) {
-//    container.html("");
+function outputPosts(results, container) {
+   container.html(" ");
   
-//    results.forEach(result => {
-//        var html = createPostHtml(result)
-//        container.append(html);
-//    });
+   results.forEach(result => {
+       var html = createPostHtml(result)
+       container.append(html);
+   });
 
-//    if(results.length == 0) {
-//      container.append("<span class='noResults'>Nothing to show.</span>")
-//    }
-// }
+   if(results.length == 0) {
+     container.append("<span class='noResults'>Nothing to show.</span>")
+   }
+}
