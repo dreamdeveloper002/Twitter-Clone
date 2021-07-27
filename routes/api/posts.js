@@ -64,10 +64,18 @@ router.put("/:id/like", async(req, res, next) => {
   .catch(error => {
     console.log(error);
     res.status(400);
-  })
+  });
 
+  //Insert post like
+  var post = await Post.findByIdAndUpdate(postId, { [option]: { likes: userId }}, { new: true })
+  .catch(error => {
+    console.log(error);
+    res.status(400);
+  });
+
+ 
   
-  res.status(200).send('Yahoo')
+  res.status(200).send(post)
 });
 
 
