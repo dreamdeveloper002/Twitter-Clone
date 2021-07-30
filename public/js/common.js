@@ -59,12 +59,12 @@ $(document).on("click", ".retweetButton", (event) => {
         url: `/api/posts/${postId}/retweet`,
         type: "POST",
         success: (postData) => {
-            //  button.find("span").text(postData.likes.length || "");
-            //  if(postData.likes.includes(userLoggedIn._id)) {
-            //      button.addClass("active");
-            //  } else {
-            //     button.removeClass("active")
-            //  }
+             button.find("span").text(postData.likes.length || "");
+             if(postData.likes.includes(userLoggedIn._id)) {
+                 button.addClass("active");
+             } else {
+                button.removeClass("active")
+             }
             console.log(postData);
         }
     });
