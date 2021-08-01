@@ -50,20 +50,20 @@ $(document).on("click", ".likeButton", (event) => {
     });
 });
 
-$(document).on("click", ".retweetButton", (event) => {
-    var button = $(event.target);
-    var postId = getPostIdFromElement(button);
-    if (postId === undefined ) return;
+// $(document).on("click", ".retweetButton", (event) => {
+//     var button = $(event.target);
+//     var postId = getPostIdFromElement(button);
+//     if (postId === undefined ) return;
 
-    $.ajax({
-        url: `/api/posts/${postId}/retweet`,
-        type: "POST",
-        success: (postData) => {
+//     $.ajax({
+//         url: `/api/posts/${postId}/retweet`,
+//         type: "POST",
+//         success: (postData) => {
         
-            console.log(postData);
-        }
-    });
-});
+//             console.log(postData);
+//         }
+//     });
+// });
 
 
 
