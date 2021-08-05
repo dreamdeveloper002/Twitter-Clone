@@ -28,12 +28,12 @@ h1 {
   margin: 0;
 }
 
-/* nav {
+nav {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   height: 100%;
-} */
+}
 
 nav a {
   padding: 10px;
@@ -151,7 +151,7 @@ button span {
   flex: 1;
 }
 
-/* .username,
+.username,
 .date {
   color: var(--greyText)
 }
@@ -163,7 +163,7 @@ button span {
 .postFooter {
   display: flex;
   align-items: center;
-} */
+}
 
 .postFooter .postButtonContainer {
   flex: 1;
