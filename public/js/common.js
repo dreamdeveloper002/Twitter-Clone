@@ -89,12 +89,34 @@ function getPostIdFromElement(element) {
 
 
 function createPostHtml(postData) {
-  var postedBy = postData.postedBy;
-  var displayName = postedBy.firstName + " " + postedBy.lastName;
-  var timestamp = timeDifference(new Date(), new Date(postData.createdAt));
-  var likeButtonActiveClass = postData.likes.includes(userLoggedIn._id) ? "active" : "";
+  
+if(postData == null ) return alert("Post object is null");
+
+var isRetweet = postData.retweetData !== undefined;
+var retweetedBy = isRetweet ? postData.postedBy.username : null;
+var postData = isRetweet ? postData.retweetData : postData;
+
+
+    
+var postedBy = postData.postedBy;
+var displayName = postedBy.firstName + " " + postedBy.lastName;
+var timestamp = timeDifference(new Date(), new Date(postData.createdAt));
+var likeButtonActiveClass = postData.likes.includes(userLoggedIn._id) ? "active" : "";
+var retweetButtonActiveClass = postData.retweetUsers.includes(userLoggedIn._id) ? "active" : "";
+
+  var retweetText = '';
+
+  if(isRetweet) {
+      retweetText = `<span>
+      <i class='fas fa-retweet'></i> 
+      Retweeted by <a href='/profile/${retweetedBy}'>@${retweetedBy}</a> 
+      </span>`
+  }
 
   return `<div class='post' data-id='${postData._id}'>
+              <div class='postActionContainer'>
+                ${retweetText}
+              </div>
 
               <div class='mainContentContainer'>
                   <div class='userImageContainer'>
@@ -116,7 +138,7 @@ function createPostHtml(postData) {
                               </button>
                           </div>
                           <div class='postButtonContainer green'>
-                              <button class='retweetButton'>
+                              <button class='retweetButton ${retweetButtonActiveClass}'>
                                   <i class='fas fa-retweet'></i>
                                   <span>${ postData.retweetUsers.length || ""}</span>
                               </button>
