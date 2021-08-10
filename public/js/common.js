@@ -38,7 +38,12 @@ $("#replyModal").on("show.bs.modal", (event) => {
     $.get(`/api/posts/${postId}`, results => {
         outputPosts(results, $("#originalPostContainer"));
       });
-})
+});
+
+$("#replyModal").on("hidden.bs.modal", (event) => {
+    $("#originalPostContainer").html("");
+});
+
 
 
 $(document).on("click", ".likeButton", (event) => {
