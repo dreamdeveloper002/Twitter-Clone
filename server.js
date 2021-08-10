@@ -20,8 +20,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
     secret: process.env.SECRET,
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { maxAge: 60000 }
 }));
+
 
 //Routes
 const loginRoute = require('./routes/loginRoutes');
