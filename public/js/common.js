@@ -141,7 +141,9 @@ var retweetButtonActiveClass = postData.retweetUsers.includes(userLoggedIn._id) 
       <i class='fas fa-retweet'></i> 
       Retweeted by <a href='/profile/${retweetedBy}'>@${retweetedBy}</a> 
       </span>`
-  }
+  };
+
+  
 
   return `<div class='post' data-id='${postData._id}'>
               <div class='postActionContainer'>
