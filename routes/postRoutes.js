@@ -14,7 +14,7 @@ router.get("/:id", (req, res, next) => {
     postId: req.params.id
 }
 
-res.status(200).render("post", payload)
+res.status(200).render("postPage", payload)
   
 });
 

@@ -20,8 +20,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
     secret: process.env.SECRET,
     resave: true,
-    saveUninitialized: false,
-    cookie: { maxAge: 60000 }
+    saveUninitialized: true,
+    cookie: { maxAge: 8*60*60*1000 },
 }));
 
 
@@ -29,6 +29,7 @@ app.use(session({
 const loginRoute = require('./routes/loginRoutes');
 const logoutRoute = require('./routes/logoutRoutes');
 const registerRoute = require('./routes/registerRoutes');
+const postRoutes = require('./routes/postRoutes');
 
 //Api Routes
 const postRoute = require('./routes/api/posts');
@@ -37,6 +38,7 @@ app.use('/login', loginRoute);
 app.use('/register', registerRoute);
 app.use('/logout', logoutRoute);
 app.use('/api/posts', postRoute);
+app.use('/posts', postRoutes);
 
 
 const PORT = process.env.PORT || 5000;

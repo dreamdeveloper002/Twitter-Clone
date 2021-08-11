@@ -103,11 +103,13 @@ $(document).on("click", ".retweetButton", (event) => {
 });
 
 $(document).on("click", ".post", (event) => {
-    var button = $(event.target);
-    var postId = getPostIdFromElement(button);
+    var element = $(event.target);
+    var postId = getPostIdFromElement(element);
 
     if (postId !== undefined && !element.is("button")) {
-        window.location.href = `/post/${postId}`
+        window.location.href = `/posts/${postId}`
+    } else {
+        console.log("hello world!")
     }
 });
 
