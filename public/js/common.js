@@ -114,15 +114,15 @@ $(document).on("click", ".post", (event) => {
 });
 
 
-// function getPostIdFromElement(element) {
-//     var isRoot = element.hasClass("post");
-//     var rootElement = isRoot ? element : element.closest(".post");
-//     var postId = rootElement.data().id;
+function getPostIdFromElement(element) {
+    var isRoot = element.hasClass("post");
+    var rootElement = isRoot ? element : element.closest(".post");
+    var postId = rootElement.data().id;
     
-//     if(postId === undefined ) return alert("Post id undefined");
+    if(postId === undefined ) return alert("Post id undefined");
 
-//     return postId;
-// };
+    return postId;
+};
 
 
 
@@ -251,20 +251,20 @@ function timeDifference(current, previous) {
 
 
 
-// function outputPosts(results, container) {
-//     container.html("");
+function outputPosts(results, container) {
+    container.html("");
     
 
-//     if(!Array.isArray(results)) {
-//         results = [results];
-//     };
+    if(!Array.isArray(results)) {
+        results = [results];
+    };
 
-//     results.forEach(result => {
-//         var html = createPostHtml(result)
-//         container.append(html);
-//     });
+    results.forEach(result => {
+        var html = createPostHtml(result)
+        container.append(html);
+    });
  
-//     if(results.length == 0) {
-//       container.append("<span class='noResults'>Nothing to show.</span>")
-//     }
-// }
+    if(results.length == 0) {
+      container.append("<span class='noResults'>Nothing to show.</span>")
+    }
+}
