@@ -15,36 +15,36 @@ $("#postTextarea, #replyTextarea").keyup(event => {
   submitButton.prop("disabled", false);
 });
 
-$("#submitPostButton, #submitReplyButton").click(() => {
-  var button = $(event.target);
+// $("#submitPostButton, #submitReplyButton").click(() => {
+//   var button = $(event.target);
 
-  var isModal = button.parents(".modal").length == 1;
-  var textbox = isModal ? $("#replyTextarea") : $("#postTextarea");
+//   var isModal = button.parents(".modal").length == 1;
+//   var textbox = isModal ? $("#replyTextarea") : $("#postTextarea");
 
-  var data = {
-      content: textbox.val()
-  };
+//   var data = {
+//       content: textbox.val()
+//   };
 
  
-  if (isModal) {
-      var id = button.data().id;
-      if(id == null) return alert("Button id is null");
-      data.replyTo = id;
-  }
+//   if (isModal) {
+//       var id = button.data().id;
+//       if(id == null) return alert("Button id is null");
+//       data.replyTo = id;
+//   }
 
-  $.post("/api/posts", data, postData => {
+//   $.post("/api/posts", data, postData => {
 
-      if(postData.replyTo) {
-            location.reload();
-      } else {
-            var html = createPostHtml(postData);
-            $(".postsContainer").prepend(html);
-            textbox.val("");
-            button.prop("disabled", true);
-      }
+//       if(postData.replyTo) {
+//             location.reload();
+//       } else {
+//             var html = createPostHtml(postData);
+//             $(".postsContainer").prepend(html);
+//             textbox.val("");
+//             button.prop("disabled", true);
+//       }
 
-  });
-});
+//   });
+// });
 
 $("#replyModal").on("show.bs.modal", (event) => {
     var button = $(event.relatedTarget);
@@ -61,24 +61,24 @@ $("#replyModal").on("hidden.bs.modal",() =>$("#originalPostContainer").html(""))
 
 
 
-$(document).on("click", ".likeButton", (event) => {
-    var button = $(event.target);
-    var postId = getPostIdFromElement(button);
-    if (postId === undefined ) return;
+// $(document).on("click", ".likeButton", (event) => {
+//     var button = $(event.target);
+//     var postId = getPostIdFromElement(button);
+//     if (postId === undefined ) return;
 
-    $.ajax({
-        url: `/api/posts/${postId}/like`,
-        type: "PUT",
-        success: (postData) => {
-             button.find("span").text(postData.likes.length || "");
-             if(postData.likes.includes(userLoggedIn._id)) {
-                 button.addClass("active");
-             } else {
-                button.removeClass("active")
-             }
-        }
-    });
-});
+//     $.ajax({
+//         url: `/api/posts/${postId}/like`,
+//         type: "PUT",
+//         success: (postData) => {
+//              button.find("span").text(postData.likes.length || "");
+//              if(postData.likes.includes(userLoggedIn._id)) {
+//                  button.addClass("active");
+//              } else {
+//                 button.removeClass("active")
+//              }
+//         }
+//     });
+// });
 
 $(document).on("click", ".retweetButton", (event) => {
     var button = $(event.target);
