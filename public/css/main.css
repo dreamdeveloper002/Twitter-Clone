@@ -78,7 +78,7 @@ button span {
   flex-direction: column;
 }
 
-/* .titleContainer {
+.titleContainer {
   height: 53px;
   padding: 0 var(--spacing);
   display: flex;
@@ -176,7 +176,7 @@ button span {
 .postFooter {
   display: flex;
   align-items: center;
-} */
+} 
 
 .postFooter .postButtonContainer {
   flex: 1;
@@ -207,14 +207,14 @@ button span {
 }
 
 
-/* .postButtonContainer.green button.active {
+.postButtonContainer.green button.active {
   color: var(--green);
 }
 
 .postButtonContainer.green button:hover {
   color: var(--green);
   background-color: var(--greenBackground);
-} */
+} 
 
 .postButtonContainer.red button:hover {
   color: var(--red);
