@@ -16,37 +16,37 @@ router.get("/", (req, res, next) => {
     res.status(200).render("login")
 });
 
-router.post("/", async (req, res, next) => {
+// router.post("/", async (req, res, next) => {
 
-    var payload = req.body;
-    if(req.body.logUsername && req.body.logPassword) {
-       var user = await User.findOne({
-           $or: [
-               { username: req.body.logUsername },
-               { email: req.body.logUsername }
-           ]
-       }).catch((error) => {
-           console.log(error);
-           payload.errorMessage = "Something went wrong.";
-           res.status(200).render("register", payload)
-       });
+//     var payload = req.body;
+//     if(req.body.logUsername && req.body.logPassword) {
+//        var user = await User.findOne({
+//            $or: [
+//                { username: req.body.logUsername },
+//                { email: req.body.logUsername }
+//            ]
+//        }).catch((error) => {
+//            console.log(error);
+//            payload.errorMessage = "Something went wrong.";
+//            res.status(200).render("register", payload)
+//        });
 
-       if(user != null) {
-            var result = await bcrypt.compare(req.body.logPassword, user.password)
+//        if(user != null) {
+//             var result = await bcrypt.compare(req.body.logPassword, user.password)
 
-            if(result === true) {
-               req.session.user = user;
-               return res.redirect('/');
-            } 
-       }
+//             if(result === true) {
+//                req.session.user = user;
+//                return res.redirect('/');
+//             } 
+//        }
 
-       payload.errorMessage = "Login credentials incorrect.";
-       return res.status(200).render("register", payload)
-    }
+//        payload.errorMessage = "Login credentials incorrect.";
+//        return res.status(200).render("register", payload)
+//     }
 
-    payload.errorMessage = "Make sure each field has a valid value.";
-    res.status(200).render("login")
-});
+//     payload.errorMessage = "Make sure each field has a valid value.";
+//     res.status(200).render("login")
+// });
 
 
 
