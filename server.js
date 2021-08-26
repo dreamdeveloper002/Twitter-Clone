@@ -38,7 +38,7 @@ app.use('/login', loginRoute);
 app.use('/register', registerRoute);
 app.use('/logout', logoutRoute);
 app.use('/api/posts', postRoute);
-app.use('/posts', postRoutes);
+app.use('/posts', middleware.requireLogin, postRoutes);
 
 
 const PORT = process.env.PORT || 5000;
