@@ -66,9 +66,6 @@ $("#deletePostModal").on("show.bs.modal", (event) => {
 
     $("deletePostButton").data("id", postId);
 
-    // $.get(`/api/posts/${postId}`, results => {
-    //     outputPosts(results.postData, $("#originalPostContainer"));
-    //   });
 });
 
 
