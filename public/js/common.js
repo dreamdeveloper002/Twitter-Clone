@@ -60,13 +60,13 @@ $("#replyModal").on("show.bs.modal", (event) => {
 $("#replyModal").on("hidden.bs.modal",() =>$("#originalPostContainer").html(""));
 
 
-$("#deletePostModal").on("show.bs.modal", (event) => {
-    var button = $(event.relatedTarget);
-    var postId = getPostIdFromElement(button);
+// $("#deletePostModal").on("show.bs.modal", (event) => {
+//     var button = $(event.relatedTarget);
+//     var postId = getPostIdFromElement(button);
 
-    $("deletePostButton").data("id", postId);
+//     $("deletePostButton").data("id", postId);
 
-});
+// });
 
 
 $(document).on("click", ".likeButton", (event) => {
