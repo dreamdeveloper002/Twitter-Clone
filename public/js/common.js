@@ -46,27 +46,27 @@ $("#submitPostButton, #submitReplyButton").click(() => {
   });
 });
 
-// $("#replyModal").on("show.bs.modal", (event) => {
-//     var button = $(event.relatedTarget);
-//     var postId = getPostIdFromElement(button);
+$("#replyModal").on("show.bs.modal", (event) => {
+    var button = $(event.relatedTarget);
+    var postId = getPostIdFromElement(button);
 
-//     $("#submitReplyButton").data("id", postId);
+    $("#submitReplyButton").data("id", postId);
 
-//     $.get(`/api/posts/${postId}`, results => {
-//         outputPosts(results.postData, $("#originalPostContainer"));
-//       });
-// });
+    $.get(`/api/posts/${postId}`, results => {
+        outputPosts(results.postData, $("#originalPostContainer"));
+      });
+});
 
 $("#replyModal").on("hidden.bs.modal",() =>$("#originalPostContainer").html(""));
 
 
-// $("#deletePostModal").on("show.bs.modal", (event) => {
-//     var button = $(event.relatedTarget);
-//     var postId = getPostIdFromElement(button);
+$("#deletePostModal").on("show.bs.modal", (event) => {
+    var button = $(event.relatedTarget);
+    var postId = getPostIdFromElement(button);
 
-//     $("deletePostButton").data("id", postId);
+    $("deletePostButton").data("id", postId);
 
-// });
+});
 
 
 $(document).on("click", ".likeButton", (event) => {
