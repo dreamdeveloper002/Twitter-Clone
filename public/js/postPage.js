@@ -1,9 +1,9 @@
-// $(document).ready(() => {
+$(document).ready(() => {
 
-//   $.get(`/api/posts/${postId}`, results => {
+  $.get(`/api/posts/${postId}`, results => {
       
-//     outputPostsWithReplies(results, $(".postsContainer"));
+    outputPostsWithReplies(results, $(".postsContainer"));
 
-//   })
+  })
 
-// });
+});
