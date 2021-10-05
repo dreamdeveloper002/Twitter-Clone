@@ -8,12 +8,13 @@ mixin createPostForm(userLoggedIn)
                 button#submitPostButton(disabled="") Post
 
 mixin createReplyModal(userLoggedIn)
-     #replyModal.modal.fade(tabindex='-1', aria-labelledby='replyModalLabel', aria-hidden='true')
-        .modal-dialog
+    #replyModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='replyModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
             .modal-content
                 .modal-header
                     h5#replyModalLabel.modal-title Reply
-                    button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') &times;
                 .modal-body
                     #originalPostContainer
                     .postFormContainer
@@ -22,20 +23,21 @@ mixin createReplyModal(userLoggedIn)
                         .textareaContainer
                             textarea#replyTextarea(placeholder="What's happening?")
                 .modal-footer
-                    button.btn.btn-secondary.btn-close(type='button', data-dismiss="modal") Close
+                    button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                     button#submitReplyButton.btn.btn-primary(type='button', disabled="") Reply
 
-mixin createDeletePostModal(userLoggedIn)
-     #deletePostModal.modal.fade(tabindex='-1', aria-labelledby='deletePostModalLabel', aria-hidden='true')
+mixin createDeletePostModal()
+    #deletePostModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='deletePostModalLabel', aria-hidden='true')
         .modal-dialog(role='document')
             .modal-content
                 .modal-header
                     h5#deletePostModalLabel.modal-title Delete the post?
-                    button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') &times;
                 .modal-body
-                    p You won't be able to delete this
+                    p You won't be able to delete this.
                 .modal-footer
-                    button.btn.btn-secondary.btn-close(type='button', data-dismiss="modal") Close
+                    button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                     button#deletePostButton.btn.btn-primary(type='button') Delete
 
 mixin createPostModals(userLoggedIn)

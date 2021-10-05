@@ -138,10 +138,10 @@ var deletePost = await Post.findOneAndDelete({ postedBy: userId, retweetData: po
 
 router.delete("/:id", async(req, res, next) => {
       Post.findByIdAndDelete(req.params.id)
-      .then(() => res.statusCode(200))
+      .then(() => res.sendStatus(200))
       .catch((error) => {
         console.log(error);
-        res.status(400);
+        return res.sendStatus(400)
       })
      
 })
@@ -154,7 +154,9 @@ async function getPosts(filter) {
   .sort({"createdAt": -1 })
   .catch(error => console.log(error));
 
+
   results = await User.populate(results, { path: "replyTo.postedBy"});
+
   return await User.populate(results, { path: "retweetData.postedBy"});
   
 }
