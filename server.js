@@ -26,10 +26,11 @@ app.use(session({
 
 
 //Routes
-const loginRoute = require('./routes/loginRoutes');
-const logoutRoute = require('./routes/logoutRoutes');
-const registerRoute = require('./routes/registerRoutes');
-const postRoutes = require('./routes/postRoutes');
+const loginRoute = require('./routes/loginRoute');
+const logoutRoute = require('./routes/logoutRoute');
+const registerRoute = require('./routes/registerRoute');
+const postRoutes = require('./routes/postRoute');
+const profileRoute = require('./routes/profileRoute');
 
 //Api Routes
 const postRoute = require('./routes/api/posts');
@@ -39,6 +40,7 @@ app.use('/register', registerRoute);
 app.use('/logout', logoutRoute);
 app.use('/api/posts', postRoute);
 app.use('/posts', middleware.requireLogin, postRoutes);
+app.use('/profile', middleware.requireLogin, profileRoute);
 
 
 const PORT = process.env.PORT || 5000;
