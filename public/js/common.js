@@ -76,6 +76,7 @@ $("#deletePostButton").click((event) => {
                 alert("could not delete post");
                 return;
             }
+            
             location.reload();
         }
     })
@@ -158,7 +159,8 @@ function createPostHtml(postData, largeFont = false) {
     postData = isRetweet ? postData.retweetData : postData;
     
     var postedBy = postData.postedBy;
-    console.log(postedBy._id)
+
+
     if(postedBy._id === undefined) {
         return console.log("User object not populated");
     }
